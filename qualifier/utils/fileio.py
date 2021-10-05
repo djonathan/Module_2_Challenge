@@ -30,6 +30,10 @@ def load_csv(csvpath):
     return data
 
 
+#############################################################################################
+#   Write to a CSV file
+#   Arguments: csvpath (Path) for CSV file, header (list) for file, loans list of data
+#############################################################################################
 
 def write_csv(csvpath, header, loans):
 
