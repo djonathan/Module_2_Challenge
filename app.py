@@ -1,3 +1,5 @@
+#! python
+
 # -*- coding: utf-8 -*-
 """Loan Qualifier Application.
 
@@ -11,7 +13,7 @@ import fire
 import questionary
 from pathlib import Path
 
-from qualifier.utils.fileio import load_csv
+from qualifier.utils.fileio import load_csv, write_csv
 
 from qualifier.utils.calculators import (
     calculate_monthly_debt_ratio,
@@ -103,13 +105,43 @@ def find_qualifying_loans(bank_data, credit_score, debt, income, loan, home_valu
 
 
 def save_qualifying_loans(qualifying_loans):
+    use_cvspath = False
+    header = [ "Lender", "Max Loan Amount", "Max LTV", "Max DTI", "Min Credit Score", "Interest Rate" ]
+
     """Saves the qualifying loans to a CSV file.
 
     Args:
         qualifying_loans (list of lists): The qualifying bank loans.
     """
     # @TODO: Complete the usability dialog for savings the CSV Files.
-    # YOUR CODE HERE!
+
+    num_qual_loans = len(qualifying_loans) 
+    if num_qual_loans == 0:
+        print("We regret to inform you that you do not qualify for a loan.")
+        sys.exit(1)
+    else:
+        yes_no = questionary.text(f"There are {num_qual_loans} qualifying loans. Do you want to save them in a file: [yes no]").ask()
+
+        if yes_no == "yes":
+            # Loop: Ask for file name. If file exists, ask if want to overwrite it or enter a new name
+            while not use_cvspath:
+                print("")
+                csvpath = questionary.text("Enter a file path to save the qualifying loans (.csv):").ask()
+                csvpath = Path(csvpath)
+                if csvpath.exists():  # do we  need "== True"
+                    answer = questionary.text("    That file already exists, do you want to overwrite it: [yes no]").ask()
+                    if answer == "no":
+                        continue    # Loop and ask again
+                    else:
+                        use_cvspath = True
+                else:
+                    use_cvspath = True
+        else:
+            print(f"Not saving the information for the {num_qual_loans} qualifying loans at this time.")
+            sys.exit(0)
+
+    # Create a CSV file with header and one row per loan entry
+    write_csv(csvpath, header, qualifying_loans)
 
 
 def run():
