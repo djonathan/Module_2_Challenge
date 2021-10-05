@@ -117,20 +117,20 @@ def save_qualifying_loans(qualifying_loans):
 
     num_qual_loans = len(qualifying_loans) 
     if num_qual_loans == 0:
-        print("We regret to inform you that you do not qualify for a loan.")
+        print("\n\tWe regret to inform you that you do not qualify for a loan.\n")
         sys.exit(1)
     else:
-        yes_no = questionary.text(f"There are {num_qual_loans} qualifying loans. Do you want to save them in a file: [yes no]").ask()
+        yes_no = questionary.confirm(f"There are {num_qual_loans} qualifying loans. Do you want to save them in a file?").ask()
 
-        if yes_no == "yes":
+        if yes_no == True:
             # Loop: Ask for file name. If file exists, ask if want to overwrite it or enter a new name
             while not use_cvspath:
                 print("")
                 csvpath = questionary.text("Enter a file path to save the qualifying loans (.csv):").ask()
                 csvpath = Path(csvpath)
                 if csvpath.exists():  # do we  need "== True"
-                    answer = questionary.text("    That file already exists, do you want to overwrite it: [yes no]").ask()
-                    if answer == "no":
+                    answer = questionary.confirm("    That file already exists, do you want to overwrite it?").ask()
+                    if answer == False:
                         continue    # Loop and ask again
                     else:
                         use_cvspath = True
