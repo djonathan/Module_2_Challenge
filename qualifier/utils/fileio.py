@@ -30,14 +30,17 @@ def load_csv(csvpath):
     return data
 
 
-#############################################################################################
-#   Write to a CSV file
-#   Arguments: csvpath (Path) for CSV file, header (list) for file, loans list of data
-#############################################################################################
 
-def write_csv(csvpath, header, loans):
+def save_csv(csvpath, header, loans):
+    """Save bank loan data to a CSV file.
 
-    print("\nSaving loans")
+    Args:
+        csvpath (Path): The CSV file path
+        header (list):  Descriptive list of value fields
+        loans: Bank data, list of lists 
+    """
+
+    print("\nSaving loans\n")
     with open(csvpath, "w") as csvfile:
         csvwriter = csv.writer(csvfile, delimiter=",")
         csvwriter.writerow(header)
