@@ -1,33 +1,54 @@
-# Project Title
+# Loan Qualifier Processing
 
-Just after the title, introduce your project by describing attractively what the project is about and what is the main problem that inspires you to create this project or what is the main contribution for the potential user of your project.
+Finding a bank that will offer a loan satisfying your needs can be time consuming. This project aims to simplify the process by analyzing loan requirements for a selection of banks, then matching them with your particular financial needs and situation. 
 
 ---
 
 ## Technologies
 
-Describe the technologies required to use your project such as programming languages, libraries, frameworks, and operating systems. Be sure to include the specific versions of any critical dependencies that you have used in the stable version of your project.
+This Loan Qualifier application is written in Python, and makes use of available libraries to simplify program input:
+* [Fire](https://github.com/google/python-fire):  Helps create the command-line-interface (CLI) for the user to input data.
+* [Questionary](https://github.com/tmbo/questionary): Mechanisms for prompting the user for data input.
 
 ---
 
 ## Installation Guide
-
-In this section, you should include detailed installation notes containing code blocks and screenshots.
+Check if Fire and Questionary libraries are installed on your system:
+```
+pip freeze | grep -e 'fire\|questionary'
+fire==0.4.0
+questionary==1.10.0
+```
+If your result is similar (exact version numbers are not important), then your installation is complete.
+Otherwise, install Fire and Questionary as follows:
+```
+pip install fire
+pip install questionary
+```
 
 ---
 
 ## Usage
+The app will ask for the path to a CSV file of bank data. You might want to copy that path so it's ready for pasting when prompted.
 
-This section should include screenshots, code blocks, or animations explaining how to use your project.
+If you are qualified for any loans, you will be given the option of saving related data.
+
+Run the app:
+```
+python app.py
+```
+From this example, note the data you should have ready before running the program yourself:
+
+![Loan qualifier](Loan_qualifier.png)
 
 ---
 
 ## Contributors
 
-In this section, list all the people who contribute to this project. You might want recruiters or potential collaborators to reach you, so include your contact email and, optionally, your LinkedIn or Twitter profile.
+[David Jonathan](https://www.linkedin.com/in/david-jonathan-1b9470/)
 
 ---
 
 ## License
 
-When you share a project on a repository, especially a public one, it's important to choose the right license to specify what others can and can't with your source code and files. Use this section to include the license you want to use.
+Licensed under the [MIT License](https://github.com/tmbo/questionary/blob/master/LICENSE). Copyright 2021 David Jonathan
