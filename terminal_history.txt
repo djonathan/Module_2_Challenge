@@ -1,0 +1,49 @@
+  501  history | grep git
+  507  cd git;ll
+  510  git status
+  511  git diff qualifier/utils/fileio.py
+  514  git add qualifier/utils/fileio.py
+  515  git commit -m'Added function write_csv(csvpath, header, loans)'
+  521  git diff qualifier/utils/fileio.py
+  524  git status
+  527  git push
+  528  git status
+  529  git diff qualifier/utils/fileio.py
+  530  git add qualifier/utils/fileio.py
+  531  git commit -m'Comments for new write_csv() function'
+  532  git push
+  533  git status
+  534  git diff
+  537  git add app.py 
+  538  git commit -m'Created save_qualifying_loans(), using questionary and qualifier/utils/fileio.py:write_csv()'
+  539  git push app.py
+  540  history | grep git
+  541  git push
+  555  git diff
+  556  git add app.py 
+  557  git commit -m'Use questionary.confirm for file-saving dialog'
+  558  git push
+  580  git diff
+  581  git status
+  582  git add app.py qualifier/utils/fileio.py 
+  583  git commit -m'Renamed write_csv() to save_csv()'
+  584  git push
+  591  git status
+  592  git diff app.py
+  609  git diff app.py
+  620  history | grep git | tail -50
+  621  git status
+  622  git diff app.py
+  629  git diff app.py
+  630  git add app.py 
+  631  git commit -m'Added copyright and reworked some comments'
+  632  git push
+  633  git status
+  634  git diff README.md
+  636  git add Loan_qualifier.png 
+  637  git commit -m'Screenshot showing app.py usage'
+  639  git push 
+  641  git add README.md 
+  642  git commit -m'Completed README documentation'
+  643  git push
+  646  history | grep git > terminal_history.txt
